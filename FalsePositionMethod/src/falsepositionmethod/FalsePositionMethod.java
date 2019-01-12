@@ -1,13 +1,12 @@
 
-package bisection_method;
+package falsepositionmethod;
 
 import java.util.Scanner;
 
-public class Bisection_method {
+public class FalsePositionMethod {
     public static final double E = 0.001;
-    
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);  
         
         double x1, x2;
         System.out.println("Enter the values of x1 and x2: ");
@@ -30,15 +29,19 @@ public class Bisection_method {
                     x1 = x0;
                 }    
             }
-            System.out.println("root is: " + ((x2 + x1)/2));
+            //System.out.println("root is: " + ((x2 + x1)/2));
         }
     }
     
     private static double calculateX0(double x1, double x2){
-        return((x1 + x2)/2);
+        double temp = evaluateFunc(x1) * (x2 - x1);
+        double temp2 = evaluateFunc(x2) - evaluateFunc(x1);
+        
+        return (x1 - (temp / temp2));
     }
     
     private static double evaluateFunc(double x){
         return ((x * x * x) + (3 * x) - 5);
     }
+    
 }
