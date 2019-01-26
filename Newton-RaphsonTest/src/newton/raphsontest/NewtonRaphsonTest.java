@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class NewtonRaphsonTest {
     
-    private static final double E = 0.0001;
+    private static final double E = 0.00001;
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the degree: ");
