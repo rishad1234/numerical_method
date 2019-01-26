@@ -38,13 +38,13 @@ public class NewtonRaphsonTest {
             //System.out.println(h);
             x1 = x0 - h;
             //System.out.println(x1);
-            if(horners(equation, x1) == 0.0){
+            if(Math.abs((x1 - x0)/ x1) < E){
                 System.out.println("Root is: " + x1);
                 break;
             }else{
                 x0 = x1;
             }
-        }while(Math.abs((x1 - x0)/ x1) < E);
+        }while(true);
         
         //System.out.println("root is: " + x1);
     }
