@@ -29,7 +29,7 @@ public class NewtonRaphsonTest {
 //        System.out.println("differentiation value: " + horners(differentiation, x0));
         
         double x1;
-        do{
+        while(true){
             if(horners(equation, x0) == 0){
                 System.out.println("root is: " + x0);
                 break;
@@ -44,14 +44,14 @@ public class NewtonRaphsonTest {
             }else{
                 x0 = x1;
             }
-        }while(true);
+        }
         
         //System.out.println("root is: " + x1);
     }
     
-    public static void newtonRaphson(int[] equation, int[] differentiation){
-        
-    }
+//    public static void newtonRaphson(int[] equation, int[] differentiation){
+//        
+//    }
     
     public static double horners(double[] equation, double inputValue){
         double result = equation[0];
