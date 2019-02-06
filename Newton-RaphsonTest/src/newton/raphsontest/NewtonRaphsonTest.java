@@ -20,7 +20,7 @@ public class NewtonRaphsonTest {
         System.out.println("Enter the initial assumption: ");
         double x0 = input.nextDouble();
         
-        double hor = horners(equation, x0);
+        //double hor = horners(equation, x0);
         //System.out.println("Horners: " + hor);
         
         double[] differentiation = differenciate(equation, degree);
