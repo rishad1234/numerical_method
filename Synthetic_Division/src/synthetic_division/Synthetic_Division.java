@@ -18,10 +18,12 @@ public class Synthetic_Division {
         
         printEquation(equation, degree);
         
-//        System.out.println("Enter a root of the equation: ");
-//        int root = input.nextInt();
+        System.out.println("Enter a root of the equation: ");
+        int root = input.nextInt();
         
-        
+        System.out.println("After synthetic division: ");
+        int[] newEquation = syntheticDivision(equation, degree, root);
+        printEquation(newEquation, degree - 1);
     }
     
     private static void checkForSign(int number){
@@ -48,11 +50,15 @@ public class Synthetic_Division {
         System.out.println("");
     }
     
-//    public static int[] syntheticDivision(int[] equation, int degree){
-//        int[] newEquation = new int[degree - 1];
-//        
-//        int temp = 0;
-//        
-//        for(int i = 0; )
-//    }
+    public static int[] syntheticDivision(int[] equation, int degree,int root){
+        int[] newEquation = new int[degree - 1];
+        
+        int temp = 0;
+        
+        for(int i = 0; i < newEquation.length; i++){
+            newEquation[i] = equation[i] + temp * root;
+            temp = newEquation[i];
+        }
+        return newEquation;
+    }
 }
