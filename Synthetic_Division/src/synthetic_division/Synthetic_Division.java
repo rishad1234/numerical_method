@@ -9,21 +9,21 @@ public class Synthetic_Division {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the number of degree: ");
         int degree = input.nextInt();
-        int[] equation = new int[degree];
+        int[] equation = new int[degree + 1];
         
         System.out.println("Enter the values: ");
         for(int i = 0; i < equation.length; i++){
             equation[i] = input.nextInt();
         }
         
-        printEquation(equation, degree);
+        printEquation(equation, degree + 1);
         
         System.out.println("Enter a root of the equation: ");
         int root = input.nextInt();
         
         System.out.println("After synthetic division: ");
-        int[] newEquation = syntheticDivision(equation, degree, root);
-        printEquation(newEquation, degree - 1);
+        int[] newEquation = syntheticDivision(equation, degree + 1, root);
+        printEquation(newEquation, degree);
     }
     
     private static void checkForSign(int number){
