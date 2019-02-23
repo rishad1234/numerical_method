@@ -10,7 +10,7 @@ public class NewtonRaphsonTest {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the degree: ");
         int degree = input.nextInt();
-        double[] equation = new double[degree];
+        double[] equation = new double[degree + 1];
         
         System.out.println("Enter the values: ");
         for(int i = 0; i < equation.length; i++){
@@ -66,8 +66,9 @@ public class NewtonRaphsonTest {
         int length = equation.length;
         double[] diffArray = new double[length - 1];
         
-        for(int i = 1; i < length; i++){
-            diffArray[i - 1] = equation[i - 1] * --degree;
+        for(int i = 0; i < length - 1; i++){
+            diffArray[i] = equation[i] * degree;
+            degree--;
         }
         return diffArray;
     }
