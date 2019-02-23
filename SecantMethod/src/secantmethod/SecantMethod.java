@@ -10,7 +10,7 @@ public class SecantMethod {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the degree: ");
         int degree = input.nextInt();
-        double[] equation = new double[degree];
+        double[] equation = new double[degree + 1];
         
         System.out.println("Enter the values: ");
         for(int i = 0; i < equation.length; i++){
