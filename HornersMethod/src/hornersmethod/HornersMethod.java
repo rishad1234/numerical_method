@@ -7,7 +7,7 @@ public class HornersMethod {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the degree: ");
         int degree = input.nextInt();
-        int[] equation = new int[degree];
+        int[] equation = new int[degree + 1];
         
         System.out.println("enter the values");
         for(int i = 0; i < equation.length; i++){
