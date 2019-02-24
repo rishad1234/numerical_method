@@ -9,12 +9,16 @@ public class NewtonsMethodTest {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the number of degree: ");
         int degree = input.nextInt();
-        double[] equation = new double[degree];
+        double[] equation = new double[degree + 1];
         
         System.out.println("Enter the equation: ");
         for(int i = 0; i < equation.length; i++){
             equation[i] = input.nextDouble();
         }
+        
+        System.out.println("Enter the initial guess: ");
+        double x0 = input.nextDouble();
+        newtonsMethod(equation, x0, degree);
         
     }
     
@@ -42,8 +46,8 @@ public class NewtonsMethodTest {
         System.out.println("");
     }
     
-    public static double[] syntheticDivision(double[] equation, int degree,double root){
-        double[] newEquation = new double[degree - 1];
+    public static double[] syntheticDivision(double[] equation, int degree, double root){
+        double[] newEquation = new double[degree];
         
         double temp = 0;
         
@@ -67,14 +71,48 @@ public class NewtonsMethodTest {
         int length = equation.length;
         double[] diffArray = new double[length - 1];
         
-        for(int i = 1; i < length; i++){
-            diffArray[i - 1] = equation[i - 1] * --degree;
+        for(int i = 0; i < length - 1; i++){
+            diffArray[i] = equation[i] * degree;
+            degree--;
         }
         return diffArray;
     }
     
-    public static void newtonsMethod(int[] equation, double iniatiaValue){
-        
+    public static double newtonRaphson(double[] equation, double[] diffArray, double x0){
+        double x1 = 0.0;
+        while(true){
+            if(horners(equation, x0) == 0){
+                System.out.println("root is: " + x0);
+                break;
+            }
+            double h = horners(equation, x0) / horners(diffArray, x0);
+            //System.out.println(h);
+            x1 = x0 - h;
+            //System.out.println(x1);
+            if(Math.abs((x1 - x0)/ x1) < 0.00001){
+                System.out.println("Root is: " + x1);
+                break;
+            }else{
+                x0 = x1;
+            }
+        }
+        return x1;
     }
     
+    public static void newtonsMethod(double[] equation, double x0, int degree){
+        
+        double[] temp = equation;
+        System.out.println(temp.length);
+        double[] tempDiff = differenciate(equation, degree);
+        System.out.println(tempDiff.length);
+        double x1;
+        while(degree > 1){
+            x1 = newtonRaphson(temp, tempDiff, x0);
+            x0 = x1;
+            temp = syntheticDivision(temp, degree, x1);
+            tempDiff = differenciate(temp, degree);
+            degree--;
+        }
+        System.out.println("Root is: " + -temp[1] / temp[0]);
+    }   
 }
