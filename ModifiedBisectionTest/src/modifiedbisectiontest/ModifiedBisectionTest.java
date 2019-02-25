@@ -26,9 +26,9 @@ public class ModifiedBisectionTest {
         modifiedBisection(equation, lowerLimit, upperLimit); 
     }
     
-    public static int horners(int[] equation, int inputValue){
+    public static double horners(double[] equation, double inputValue){
         
-        int result = equation[0];
+        double result = equation[0];
         int length = equation.length;
         for(int i = 1; i < length; i++){
             result = result * inputValue + equation[i];
@@ -37,6 +37,39 @@ public class ModifiedBisectionTest {
     }
     
     public static void modifiedBisection(double[] equation, double lower, double upper){
+        double dx = 0.00001;
+        double E = 0.000000001;
+        double x0, x1, x2;
+        double f0, f1, f2;
+        x2 = lower;
         
+        while(x2 < upper){
+            lower = x2;
+            x1 = lower;
+            x2 = x1 + dx;
+            f1 = horners(equation, x1);
+            f2 = horners(equation, x2);
+            while(Math.abs((x2 - x1) / x2) > E){
+                if(f1 * f2 > 0){
+                    break;
+                }
+                x0 = (x1 + x2) / 2.0;
+                f0 = horners(equation, x0);
+                if(f0 == 0){
+                    //x2 = x1 = x0;
+                }else if(f1 * f0 < 0){
+                    x2 = x0;
+                    f2 = f0;
+                }else{
+                    x1 = x0;
+                    f1 = f0;
+                }
+                System.out.println(x0 + " " + x1 + " " + x2);
+            }
+            
+            if(Math.abs((x2 - x1) / x2) < E){
+                System.out.println("root is: " + (x1 + x2)/ 2.0);
+            }
+        }
     }
 }
