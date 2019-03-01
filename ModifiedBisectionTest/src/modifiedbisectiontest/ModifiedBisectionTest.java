@@ -41,8 +41,9 @@ public class ModifiedBisectionTest {
         double E = 0.000000001;
         double x0, x1, x2;
         double f0, f1, f2;
+        int i = 0;
         x2 = lower;
-        
+        System.out.println("Iteration\t\tx0\t\t\tx1\t\t\tx2\t\t\tf(x0)\t\t\tf(x1)\t\t\tf(x2)\n");
         while(x2 < upper){
             lower = x2;
             x1 = lower;
@@ -55,6 +56,7 @@ public class ModifiedBisectionTest {
                 }
                 x0 = (x1 + x2) / 2.0;
                 f0 = horners(equation, x0);
+                System.out.format("%d\t\t\t%f\t\t%f\t\t%f\t\t%f\t\t%f\t\t%f\n",++i,x0,x1,x2,f0,f1,f2);
                 if(f0 == 0){
                     //x2 = x1 = x0;
                 }else if(f1 * f0 < 0){
@@ -64,11 +66,12 @@ public class ModifiedBisectionTest {
                     x1 = x0;
                     f1 = f0;
                 }
-                System.out.println(x0 + " " + x1 + " " + x2);
             }
             
             if(Math.abs((x2 - x1) / x2) < E){
                 System.out.println("root is: " + (x1 + x2)/ 2.0);
+                System.out.println("Iteration\t\tx0\t\t\tx1\t\t\tx2\t\t\tf(x0)\t\t\tf(x1)\t\t\tf(x2)\n");
+                i = 0;
             }
         }
     }
