@@ -81,8 +81,8 @@ public class NewtonsMethodTest {
     public static double newtonRaphson(double[] equation, double[] diffArray, double x0){
         double x1 = 0.0;
         int i = 0;
-        double f0;
-        System.out.println("Iteration\t\tx0\t\t\tx1\t\t\tf(x0)\n");
+        double f0, f1;
+        System.out.println("Iteration\t\tx0\t\t\tx1\t\t\tf(x0)\t\t\tf(x1)\n");
         while(true){
             f0 = horners(equation, x0);
             if(horners(equation, x0) == 0){
@@ -91,7 +91,8 @@ public class NewtonsMethodTest {
             }
             double h = horners(equation, x0) / horners(diffArray, x0);
             x1 = x0 - h;
-            System.out.format("%d\t\t\t%f\t\t%f\t\t%f\n",++i,x0,x1,f0);
+            f1 = horners(equation, x1);
+            System.out.format("%d\t\t\t%f\t\t%f\t\t%f\t\t%f\n",++i,x0,x1,f0,f1);
             if(Math.abs((x1 - x0)/ x1) < 0.00001){
                 System.out.println("Root is: " + x1);
                 break;
