@@ -25,9 +25,9 @@ public class PolynomialRegression {
         
         for(int i = 1; i <= equations; i++){
             for(int j = 1; j <= equations; j++){
-                int power = i + j - 2;
+                int power = j + i - 2;
                 for(int k = 1; k <= points; k++){
-                    coefficients[i][j] += Math.pow(x[k], power);
+                    coefficients[i][j] = coefficients[i][j] + Math.pow(x[k], power);
                 }
             }
         }
@@ -35,8 +35,16 @@ public class PolynomialRegression {
         for(int i = 1; i <= equations; i++){
             int power = i - 1;
             for(int j = 1; j <= points; j++){
-                rightSideVector[i] += y[j] + Math.pow(x[j], power);
+                rightSideVector[i] = rightSideVector[i] + y[j] * Math.pow(x[j], power);
             }
+        }
+        
+        for(int i = 1; i <= equations; i++){
+            for(int j = 1; j <= equations; j++){
+                System.out.print(coefficients[i][j] + "  ");
+            }
+            System.out.println(" = " + rightSideVector[i]);
+            //System.out.println("");
         }
         
         gauss(equations);
