@@ -32,3 +32,5 @@
 /LinearRegression/dist/
 /LinearRegression/build/
 /PolynomialRegression/nbproject/private/
+/PolynomialRegression/build/
+/PolynomialRegression/dist/
