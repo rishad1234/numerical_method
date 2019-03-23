@@ -16,12 +16,16 @@ public class LinearRegression {
         for(int i = 0; i < points; i++){
             x[i] = input.nextDouble();
             y[i] = input.nextDouble();
-            
+        }
+        System.out.println("X\t\t\tY\t\t\tsumX\t\t\tsumY\t\t\tsumXY\t\t\tsumX^2");
+        for(int i = 0; i < points; i++){
             sumX += x[i];
             sumY += y[i];
             sumX2 += x[i] * x[i];
             sumXY += x[i] * y[i];
+            System.out.println(x[i] + "\t\t\t" + y[i] + "\t\t\t" + sumX + "\t\t\t" + sumY + "\t\t\t" + sumXY + "\t\t\t" + sumX2);
         }
+        
         
         xMean = sumX / points;
         yMean = sumY / points;
