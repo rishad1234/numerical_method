@@ -12,19 +12,23 @@ public class LinearRegression {
         System.out.println("Enter the number of points: ");
         int points = input.nextInt();
         System.out.println("Enter the values of x and y with a space between them one bty one: ");
+        double sumX = 0.0, sumY = 0.0, sumX2 = 0.0, sumXY = 0.0, xMean = 0.0, yMean = 0.0;
         for(int i = 0; i < points; i++){
             x[i] = input.nextDouble();
             y[i] = input.nextDouble();
-        }
-
-        double sumX = 0.0, sumY = 0.0, sumX2 = 0.0, sumXY = 0.0, xMean = 0.0, yMean = 0.0;
-        
-        for(int i = 0; i < points; i++){
+            
             sumX += x[i];
             sumY += y[i];
             sumX2 += x[i] * x[i];
             sumXY += x[i] * y[i];
         }
+        
+//        for(int i = 0; i < points; i++){
+//            sumX += x[i];
+//            sumY += y[i];
+//            sumX2 += x[i] * x[i];
+//            sumXY += x[i] * y[i];
+//        }
         
         xMean = sumX / points;
         yMean = sumY / points;
