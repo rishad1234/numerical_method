@@ -23,13 +23,6 @@ public class LinearRegression {
             sumXY += x[i] * y[i];
         }
         
-//        for(int i = 0; i < points; i++){
-//            sumX += x[i];
-//            sumY += y[i];
-//            sumX2 += x[i] * x[i];
-//            sumXY += x[i] * y[i];
-//        }
-        
         xMean = sumX / points;
         yMean = sumY / points;
         
