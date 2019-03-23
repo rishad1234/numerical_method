@@ -1,6 +1,7 @@
 
 package polynomialregression;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class PolynomialRegression {
@@ -41,10 +42,10 @@ public class PolynomialRegression {
         
         for(int i = 1; i <= equations; i++){
             for(int j = 1; j <= equations; j++){
-                System.out.print(coefficients[i][j] + "  ");
+                System.out.print(coefficients[i][j] + "\t\t\t");
             }
-            System.out.println(" = " + rightSideVector[i]);
-            //System.out.println("");
+            System.out.println(rightSideVector[i]);
+            System.out.println("");
         }
         
         gauss(equations);
