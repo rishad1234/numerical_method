@@ -26,7 +26,6 @@ public class LinearRegression {
             System.out.println(x[i] + "\t\t\t" + y[i] + "\t\t\t" + sumX + "\t\t\t" + sumY + "\t\t\t" + sumXY + "\t\t\t" + sumX2);
         }
         
-        
         xMean = sumX / points;
         yMean = sumY / points;
         
