@@ -48,6 +48,5 @@ public class NewtonsDividedInterpolation {
         }
         
         System.out.println("The interpolated answer is: " + sum);
-    }
-    
+    } 
 }
