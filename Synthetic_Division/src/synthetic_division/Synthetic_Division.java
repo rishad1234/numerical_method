@@ -50,10 +50,8 @@ public class Synthetic_Division {
     }
     
     public static int[] syntheticDivision(int[] equation, int degree, int root){
-        int[] newEquation = new int[degree];
-        
+        int[] newEquation = new int[degree];     
         int temp = 0;
-        
         for(int i = 0; i < newEquation.length; i++){
             newEquation[i] = equation[i] + temp * root;
             temp = newEquation[i];
