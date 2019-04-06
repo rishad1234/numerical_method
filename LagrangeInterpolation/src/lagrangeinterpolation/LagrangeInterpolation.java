@@ -16,8 +16,10 @@ public class LagrangeInterpolation {
             x[i] = input.nextDouble();
             y[i] = input.nextDouble();
         }
-        System.out.println("Enter the value for the inpterpolation: ");
+        System.out.println("Enter the value for the inpterpolation: ");                
         double interplationValue = input.nextDouble();
+        System.out.println("numerator\t\t\tdenumerators");
+        
         double numerator = 1.0;
         double denominator = 1.0;
         for(int i = 0; i < dataPoints; i++){
@@ -25,6 +27,8 @@ public class LagrangeInterpolation {
                 if(i != j){
                     numerator *= (interplationValue - x[j]);
                     denominator *= (x[i] - x[j]);
+                    //System.out.println(numerator + "\t\t\t\t" + denominator);
+                    System.out.format("%.3f\t\t\t\t%.3f\n", numerator, denominator);
                 }
             }
             interpolatedValue += (numerator / denominator) * y[i];
@@ -33,5 +37,4 @@ public class LagrangeInterpolation {
         }
         System.out.println("The interpolated answer is : " + interpolatedValue);     
     }
-    
 }
