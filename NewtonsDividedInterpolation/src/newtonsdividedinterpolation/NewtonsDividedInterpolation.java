@@ -26,7 +26,8 @@ public class NewtonsDividedInterpolation {
         
         for(int j = 2; j <= dataPoints; j++){
             for(int i = 1; i <= dataPoints - j + 1; i++){
-                differenceTable[i][j] = (differenceTable[i + 1][j - 1] - differenceTable[i][j - 1]) / (x[i + j - 1] - x[i]);
+                differenceTable[i][j] = (differenceTable[i + 1][j - 1] - differenceTable[i][j - 1]) / 
+                        (x[i + j - 1] - x[i]);
             }
         }
         
