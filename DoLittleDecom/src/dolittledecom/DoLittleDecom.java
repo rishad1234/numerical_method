@@ -36,7 +36,7 @@ public class DoLittleDecom {
             System.out.println("U matrix: ");
             for(int i = 1; i <= n; i++){
                 for(int j = 1; j <= n; j++){
-                    System.out.format("%.2d ", u[i][j]);
+                    System.out.format("%.2f ", u[i][j]);
                 }
                 System.out.println("");
             }
@@ -44,7 +44,7 @@ public class DoLittleDecom {
             System.out.println("L matrix: ");
             for(int i = 1; i <= n; i++){
                 for(int j = 1; j <= n; j++){
-                    System.out.format("%.2d ", l[i][j]);
+                    System.out.format("%.2f ", l[i][j]);
                 }
                 System.out.println("");
             }
@@ -52,7 +52,7 @@ public class DoLittleDecom {
             solve();
             System.out.println("Solution vector: ");
             for(int i = 1; i <= n; i++){
-                System.out.format("%.2d ", x[i]);
+                System.out.format("%.2f ", x[i]);
             }
         }else{
             System.out.println("Not possible.");
@@ -81,45 +81,50 @@ public class DoLittleDecom {
                 for(k = 1; k <= i - 1; k++){
                     sum = sum - l[i][k] * u[k][j];
                     u[i][j] = sum;
-                    
-                    if(u[j][j] <= 0.0000001){
-                        fact = NO;
-                        return;
-                    }
-                    
-                    for(i = j + 1; i <= n; i++){
-                        sum = a[i][j];
-                        
-                        for(k = 1; k <= j - 1; k++){
-                            sum = sum - l[i][k] * u[k][j];
-                        }
-                        l[i][j] = sum / u[j][j];
-                    }
                 }
             }
+            
+            if(u[j][j] <= 0.0000001){
+                fact = NO;
+                return;
+            }
+            
+            for(i = j + 1; i <= n; i++){
+                sum = a[i][j];
+
+                for(k = 1; k <= j - 1; k++){
+                    sum = sum - l[i][k] * u[k][j];
+                }
+                l[i][j] = sum / u[j][j];
+            }
         }
+        
         fact = YES;
     }
     
     private static void solve(){
         double sum; 
-        double[]z = new double[10];
+        double []z = new double[10];
         
         z[1] = b[1];
         for(int i = 2; i <= n; i++){
+            
             sum = 0.0;
             for(int j = 1; j <= i - 1; j++){
                 sum = sum + l[i][j] * z[j];
             }
+            
             z[i] = b[i] - sum;
         }
         
         x[n] = z[n] / u[n][n];
         for(int i = n - 1; i >= 1; i--){
+            
             sum = 0.0;
             for(int j = i + 1; j <= n; j++){
-                sum = sum + u[i][i] * x[j];
+                sum = sum + u[i][j] * x[j];
             }
+            
             x[i] = (z[i] - sum) / u[i][i];
         }
     }
