@@ -56,7 +56,7 @@ public class GaussSeidel {
         }
         
         count = 1;
-        while(count <= 50){
+        while(count < 50){
             key = 0;
             for(int i = 1; i <= n; i++){
 
@@ -80,7 +80,7 @@ public class GaussSeidel {
             if(key == 1){
                 if(count == 50){
                     status = 2;
-                    return;
+                    break;
                 }else{
                     status = 1;
                     for(int i = 1; i <= n; i++){
